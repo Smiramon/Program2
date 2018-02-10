@@ -1,0 +1,24 @@
+-<project> 
+	-<target name = "clean">
+	 	<delete dir="build"/>
+	 	<delete dir="jar"/>
+		<delete dir="manifest"/>
+	 </target>
+	-<target name="makedir">
+		<makedir dir = "build/classes"/>
+		<makedir dir = "jar"/>
+	 </target>		
+	-<target name="compile" depends= "makedir">
+		<javac srcdir="." includeantruntime= "false" destdir="build/classes" fork="true"/>
+	 </target>
+	-<target name= "makejar" depends="compile">
+	  -<jar destfile="jar/WebServer.jar" basedir= "build/classes">
+	    -<manifest>
+		<attribute name= "main-class" value="WebServer"/>
+	     </manifest>
+	   </jar>
+	 </target>
+	-<target name ="run" depends= "makejar">
+		<java jar="jar/WebServer.jar" fork="true"/>
+	 </target>
+</project>
